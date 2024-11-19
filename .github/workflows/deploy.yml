@@ -1,33 +1,37 @@
-name: Deploy
+name: Deploy Frontend
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
-
+    
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '18'
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
 
-    - name: Install pnpm
-      run: npm install -g pnpm
+      - name: Install Dependencies
+        run: |
+          cd client
+          npm install
 
-    - name: Install dependencies
-      run: pnpm install
+      - name: Build
+        run: |
+          cd client
+          npm run build
+        env:
+          VITE_API_URL: ${{ secrets.VITE_API_URL }}
 
-    - name: Build Docker image
-      run: docker build -t my-app:latest -f server/Dockerfile .
-
-    - name: Deploy to Railway
-      run: |
-        echo "Deploying to Railway..."
-        # Add your deployment command here
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./client/dist

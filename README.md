@@ -25,3 +25,21 @@
 - koa-bodyparser
 
 ## 项目结构 
+
+## Deployment
+
+### Backend (Railway)
+1. Create a new project on Railway
+2. Connect your GitHub repository
+3. Railway will automatically detect the `railway.toml` configuration
+4. Set required environment variables in Railway dashboard
+
+### Frontend (GitHub Pages)
+1. Enable GitHub Pages in repository settings
+2. Set the source branch to `gh-pages`
+3. Add the following secrets in GitHub repository settings:
+   - `VITE_API_URL`: Your Railway backend URL
+
+## Development
+
+### Backend
