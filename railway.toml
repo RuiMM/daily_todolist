@@ -1,9 +1,8 @@
 [build]
-builder = "nixpacks"
-buildCommand = "cd server && npm install -g pnpm && pnpm install"
+dockerfile = "server/Dockerfile"
 
 [deploy]
-startCommand = "cd server && pnpm start"
+startCommand = "npm start"
 healthcheckPath = "/api/tasks"
 healthcheckTimeout = 100
 

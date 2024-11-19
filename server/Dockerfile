@@ -16,8 +16,11 @@ RUN pnpm install
 # Copy the rest of your application code
 COPY . .
 
-# Install dependencies using pnpm
-RUN pnpm install
-
 # Log versions
 RUN node -v && npm -v && pnpm -v
+
+# Expose the port the app runs on
+EXPOSE 3000
+
+# Start the application
+CMD ["npm", "start"]
