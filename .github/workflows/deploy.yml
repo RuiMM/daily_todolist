@@ -33,7 +33,7 @@ jobs:
       - name: Build frontend
         run: cd client && pnpm build
         env:
-          VITE_API_URL: https://daily-todo-api.onrender.com
+          VITE_API_URL: https://your-railway-app-url.railway.app
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
