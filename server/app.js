@@ -38,6 +38,13 @@ app.use(serve(publicPath));
 
 // 处理前端路由 - 所有非API请求返回index.html
 app.use(async (ctx) => {
+  if (ctx.path === "/api/health") {
+    ctx.status = 200;
+    ctx.body = { status: "ok" };
+    return;
+  }
+
+  // 保持原有的静态文件处理逻辑
   if (ctx.path.startsWith("/api")) {
     return;
   }
@@ -48,11 +55,6 @@ app.use(async (ctx) => {
     ctx.status = err.status || 500;
     ctx.body = "服务器错误";
   }
-});
-
-// Add health check endpoint
-app.get("/api/health", (req, res) => {
-  res.status(200).json({ status: "ok" });
 });
 
 export default app;

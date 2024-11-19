@@ -5,7 +5,9 @@ buildCommand = "cd server && npm install"
 [deploy]
 startCommand = "cd server && npm start"
 healthcheckPath = "/api/health"
+healthcheckTimeout = "180s"
 restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 3
 
 [env]
 NODE_ENV = "production"
