@@ -1,4 +1,4 @@
-name: Deploy
+name: Deploy Frontend
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  deploy:
+  deploy-frontend:
     runs-on: ubuntu-latest
 
     steps:
@@ -25,31 +25,18 @@ jobs:
           version: 8
           run_install: true
 
-      - name: Install root dependencies
-        run: pnpm install
+      - name: Install dependencies
+        run: |
+          pnpm install
+          cd client && pnpm install
 
-      - name: Install client dependencies
-        run: cd client && pnpm install
-
-      - name: Install server dependencies
-        run: cd server && pnpm install
-
-      - name: Build client
+      - name: Build frontend
         run: cd client && pnpm build
         env:
           VITE_API_URL: https://daily-todo-api.onrender.com
 
-      - name: Copy client build to server
-        run: |
-          rm -rf server/public
-          mkdir -p server/public
-          cp -r client/dist/* server/public/
-
-      - name: Deploy to render
-        env:
-          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
-          RENDER_SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }}
-        run: |
-          curl -X POST "https://api.render.com/v1/services/$RENDER_SERVICE_ID/deploys" \
-          -H "Authorization: Bearer $RENDER_API_KEY" \
-          -H "Content-Type: application/json"
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./client/dist

@@ -19,9 +19,10 @@ app.use(errorHandler());
 // 跨域设置
 app.use(
   cors({
-    origin: "*",
+    origin: ["https://ruimm.github.io", "http://localhost:3000"],
     allowMethods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowHeaders: ["Content-Type", "Authorization", "Accept"],
+    credentials: true,
   })
 );
 
