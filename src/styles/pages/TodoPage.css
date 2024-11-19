@@ -1,0 +1,161 @@
+.todo-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--spacing-xl);
+  min-height: 100vh;
+  background-color: white;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+}
+
+.todo-header {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+  padding-bottom: var(--spacing-lg);
+  border-bottom: 2px solid var(--border-color);
+}
+
+.todo-header h1 {
+  color: var(--primary-color);
+  font-size: 2.5rem;
+  margin-bottom: var(--spacing-md);
+}
+
+.user-input {
+  margin-bottom: var(--spacing-xl);
+}
+
+.user-input input {
+  width: 100%;
+  padding: var(--spacing-md);
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.user-input input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.task-form {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+}
+
+.task-form input {
+  flex: 1;
+  padding: var(--spacing-md);
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.task-form input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.task-form button {
+  padding: var(--spacing-md) var(--spacing-xl);
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.task-form button:hover {
+  background-color: var(--primary-dark-color);
+}
+
+.tasks-list {
+  margin-top: var(--spacing-xl);
+}
+
+.day-group {
+  margin-bottom: var(--spacing-xl);
+  padding: var(--spacing-lg);
+  background-color: var(--bg-light);
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.day-group h2 {
+  color: var(--text-color);
+  font-size: 1.2rem;
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  color: var(--primary-color);
+}
+
+.error-message {
+  padding: var(--spacing-lg);
+  background-color: var(--danger-light-color);
+  color: var(--danger-color);
+  border-radius: var(--border-radius);
+  margin: var(--spacing-xl) 0;
+  text-align: center;
+}
+
+.users-tasks {
+  margin-top: var(--spacing-xl);
+}
+
+.user-tasks-group {
+  margin-bottom: var(--spacing-xl);
+  padding: var(--spacing-lg);
+  background-color: var(--bg-lighter);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.user-tasks-header {
+  color: var(--text-color);
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 2px solid var(--primary-light-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-count {
+  font-size: var(--font-size-sm);
+  color: var(--text-light);
+  font-weight: normal;
+}
+
+/* 添加一些响应式设计 */
+@media (max-width: 768px) {
+  .todo-container {
+    padding: var(--spacing-md);
+  }
+
+  .todo-header h1 {
+    font-size: 2rem;
+  }
+
+  .task-form {
+    flex-direction: column;
+  }
+
+  .task-form button {
+    width: 100%;
+    margin-top: var(--spacing-sm);
+  }
+} 

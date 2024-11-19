@@ -1,0 +1,29 @@
+.weekly-stats {
+  margin: 20px 0;
+  padding: 15px;
+  background-color: var(--bg-lighter);
+  border-radius: var(--border-radius);
+}
+
+.weekly-stats h2 {
+  margin-bottom: var(--spacing-lg);
+  color: var(--text-color);
+}
+
+.user-stats {
+  margin: var(--spacing-md) 0;
+  padding: var(--spacing-md);
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.user-stats h3 {
+  color: var(--text-color);
+  margin-bottom: var(--spacing-sm);
+}
+
+.user-stats p {
+  color: var(--text-light);
+  margin: var(--spacing-sm) 0;
+} 
