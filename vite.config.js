@@ -5,7 +5,7 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
   return {
     plugins: [react()],
-    base: mode === "production" ? "/daily-todo/" : "/",
+    base: mode === "production" ? "/daily_todolist/" : "/",
     server: {
       proxy: {
         "/api": {
