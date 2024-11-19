@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://ruimm.github.io/daily_todolist/",
+  "homepage": "https://ruimm.github.io/daily_todolist",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

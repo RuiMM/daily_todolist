@@ -15,4 +15,6 @@ export const router = createBrowserRouter([
       }
     ]
   }
-]); 
+], {
+  basename: '/daily_todolist'
+}); 
