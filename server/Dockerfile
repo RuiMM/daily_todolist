@@ -1,37 +1,35 @@
-FROM node:18-alpine as builder
+# 构建阶段
+FROM node:18-alpine AS builder
 
 WORKDIR /app
-
-# 复制工作区配置
-COPY package.json pnpm-workspace.yaml ./
-COPY client/package.json client/
-COPY server/package.json server/
 
 # 安装pnpm
 RUN npm install -g pnpm
 
+# 复制package.json文件
+COPY server/package.json server/
+COPY server/pnpm-lock.yaml server/
+
 # 安装依赖
+WORKDIR /app/server
 RUN pnpm install
 
 # 复制源代码
-COPY . .
+COPY server/ ./
 
-# 构建前端
-RUN cd client && pnpm build
-
-# 构建后端镜像
+# 生产阶段
 FROM node:18-alpine
 
 WORKDIR /app
 
-# 复制后端文件
+# 从构建阶段复制文件
 COPY --from=builder /app/server/package.json ./
+COPY --from=builder /app/server/node_modules ./node_modules
 COPY --from=builder /app/server/src ./src
-COPY --from=builder /app/client/dist ./public
 
-# 安装生产依赖
-RUN npm install -g pnpm && pnpm install --prod
+# 创建public目录
+RUN mkdir -p public
 
 EXPOSE 3001
 
-CMD ["pnpm", "start"]
+CMD ["npm", "start"]
