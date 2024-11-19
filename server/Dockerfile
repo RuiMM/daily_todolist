@@ -1,5 +1,5 @@
-# Use a Node.js base image
-FROM node:16
+# Use a Node.js base image with a compatible version
+FROM node:18
 
 # Install pnpm globally
 RUN npm install -g pnpm
