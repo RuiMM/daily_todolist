@@ -8,12 +8,8 @@
     "pnpm": ">=8.0.0"
   },
   "scripts": {
-    "start": "node src/index.js",
-    "dev": "nodemon src/index.js",
-    "build:client": "cd ../client && pnpm install && pnpm build",
-    "postbuild:client": "rm -rf public/* && cp -r ../client/dist/* public/",
-    "build": "mkdir -p public && pnpm build:client",
-    "clean": "rm -rf public/*"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "dependencies": {
     "@koa/cors": "^4.0.0",
