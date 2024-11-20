@@ -1,9 +1,9 @@
 [build]
 builder = "nixpacks"
-buildCommand = "npm i pnpm -g && cd server && pnpm install"
+buildCommand = "cd server && pnpm install"
 
 [deploy]
-startCommand = "cd server && npm start"
+startCommand = "cd server && pnpm start"
 healthcheckPath = "/api/health"
 healthcheckTimeout = 180
 restartPolicyType = "on_failure"

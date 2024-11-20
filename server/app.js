@@ -1,8 +1,8 @@
-import Koa from 'koa';
-import bodyParser from 'koa-bodyparser';
-import cors from 'koa2-cors';
-import errorHandler from './middleware/errorHandler.js';
-import tasksRouter from './routes/tasks.js';
+import Koa from "koa";
+import bodyParser from "koa-bodyparser";
+import cors from "koa2-cors";
+import errorHandler from "./middleware/errorHandler.js";
+import tasksRouter from "./routes/tasks.js";
 
 const app = new Koa();
 
@@ -10,11 +10,13 @@ const app = new Koa();
 app.use(errorHandler());
 
 // 跨域设置
-app.use(cors({
-  origin: '*',
-  allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowHeaders: ['Content-Type', 'Authorization', 'Accept'],
-}));
+app.use(
+  cors({
+    origin: "*",
+    allowMethods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowHeaders: ["Content-Type", "Authorization", "Accept"],
+  })
+);
 
 app.use(bodyParser());
 
@@ -22,4 +24,14 @@ app.use(bodyParser());
 app.use(tasksRouter.routes());
 app.use(tasksRouter.allowedMethods());
 
-export default app; 
+// 健康检查端点 (Koa 方式)
+app.use(async (ctx, next) => {
+  if (ctx.path === "/api/health") {
+    ctx.body = { status: "ok" };
+    ctx.status = 200;
+  } else {
+    await next();
+  }
+});
+
+export default app;
