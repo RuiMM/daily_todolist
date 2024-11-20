@@ -1,1 +1,1 @@
-export const API_BASE_URL = "https://daily_todolist.railway.internal";
+export const API_BASE_URL = "https://dailytodolist-production.up.railway.app";
