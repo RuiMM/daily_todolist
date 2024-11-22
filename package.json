@@ -1,17 +1,11 @@
 {
-  "name": "daily-todo",
   "private": true,
-  "version": "1.0.0",
   "scripts": {
-    "dev:client": "cd client && pnpm dev",
-    "dev:server": "cd server && pnpm dev",
-    "dev": "concurrently \"pnpm dev:client\" \"pnpm dev:server\"",
-    "build:client": "cd client && pnpm build",
-    "build:server": "cd server && pnpm build",
-    "build": "pnpm build:client && pnpm build:server",
-    "start": "cd server && pnpm start"
+    "build": "cd server && npm run start",
+    "vercel-build": "pnpm install && pnpm build"
   },
-  "devDependencies": {
-    "concurrently": "^8.2.2"
+  "dependencies": {
+    "@vercel/node": "^3.2.26",
+    "@vercel/static-build": "^2.5.35"
   }
-} 
+}

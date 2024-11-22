@@ -9,30 +9,32 @@
       "src": "client/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "buildCommand": "cd client && pnpm install && pnpm run build",
-        "outputDirectory": "client/dist"
+        "buildCommand": "cd client && pnpm install -w && pnpm run build",
+        "outputDirectory": "dist"
       }
     }
   ],
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "server/app.js"
+      "dest": "/server/app.js"
     },
     {
-      "src": "^/assets/(.*)",
-      "dest": "client/dist/assets/$1"
+      "src": "/assets/(.*)",
+      "dest": "/dist/assets/$1"
     },
     {
-      "src": "^/favicon.ico",
-      "dest": "client/dist/favicon.ico"
+      "src": "/favicon.ico",
+      "dest": "/dist/favicon.ico"
     },
     {
       "handle": "filesystem"
     },
     {
       "src": "/(.*)",
-      "dest": "client/dist/index.html"
+      "dest": "/dist/index.html"
     }
-  ]
+  ],
+  "outputDirectory": ".",
+  "public": true
 } 
