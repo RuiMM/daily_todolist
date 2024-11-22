@@ -8,8 +8,9 @@
     "pnpm": ">=8.0.0"
   },
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "preinstall": "npx only-allow pnpm"
   },
   "dependencies": {
     "@koa/cors": "^4.0.0",

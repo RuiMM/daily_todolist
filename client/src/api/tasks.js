@@ -1,12 +1,11 @@
-import { API_BASE_URL } from "../config";
 
 export const fetchTasks = async () => {
-  const response = await fetch(`${API_BASE_URL}/api/tasks`);
+  const response = await fetch(`/api/tasks`);
   return response.json();
 };
 
 export const createTask = async (task) => {
-  const response = await fetch(`${API_BASE_URL}/api/tasks`, {
+  const response = await fetch(`/api/tasks`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(task),
@@ -15,7 +14,7 @@ export const createTask = async (task) => {
 };
 
 export const updateTask = async (taskId, updates) => {
-  const response = await fetch(`${API_BASE_URL}/api/tasks/${taskId}`, {
+  const response = await fetch(`/api/tasks/${taskId}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(updates),
@@ -24,7 +23,7 @@ export const updateTask = async (taskId, updates) => {
 };
 
 export const deleteTask = async (taskId) => {
-  await fetch(`${API_BASE_URL}/api/tasks/${taskId}`, {
+  await fetch(`/api/tasks/${taskId}`, {
     method: "DELETE",
   });
 };
